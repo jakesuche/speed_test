@@ -1,7 +1,7 @@
 import React from "react";
 import { TryAgain } from "../TryAgain/TryAgain";
 import TypingChallengeContainer from "../TypingChallengeContainer /TypingChallengeContainer";
-import { Container } from "./TextContainer.style";
+import { Container , Select} from "./TextContainer.style";
 import { useState, useEffect, useRef } from "react";
 import { typingTestData } from "../../../utils/data/textSource";
 import { randomElementSelector } from '../../../helpers/randomSelector'
@@ -70,12 +70,28 @@ export default function TextContainer() {
       }
     }, 1000);
   };
+
+  const onChange = (e:any) => {
+    const { value } = e.target;
+    console.log(value)
+    setTimeRemaining(+value)
+
+  }
   return (
     <Container>
+        <Select onChange={onChange} >
+          <option value="30">
+            30 secs
+          </option>
+          <option value="50">
+            50 secs
+          </option>
+        </Select>
       {timeRemaining > 0 ? (
         <TypingChallengeContainer
         //@ts-ignore
           handleKeyPress={handleKeyPress}
+          onChange={()=>{}}
           timeRemaining={timeRemaining}
           words={detailsData.words}
           characters={detailsData.characters}

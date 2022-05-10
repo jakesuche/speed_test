@@ -33,6 +33,7 @@ export default function TypingChallengeContainer({
 
       <div className="type-challenge-cont">
         <TypingChallange
+          
           timeRemaining={timeRemaining}
           timerStarted={timerStarted}
           selectedParagraph={selectedParagraph}

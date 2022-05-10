@@ -10,6 +10,7 @@ export const ChallangeWrapper = styled.div<Iprops>`
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   .timer-container {
     margin: 16px;
@@ -42,10 +43,10 @@ export const TextAreaContainer = styled.div`
 `;
 
 export const TextareaContent = styled.div`
-display: flex;
-width: 50%;
-flex-grow: 1;
-textarea{
+  display: flex;
+  width: 50%;
+  flex-grow: 1;
+  textarea {
     text-align: left;
     flex-grow: 1;
     height: 400px;
@@ -53,11 +54,14 @@ textarea{
     padding: 10px;
     line-height: 18px;
     flex-wrap: wrap;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     overflow: scroll;
   }
+`;
 
+export const Select = styled.select`
+  position:absolute;
+  top:10px;
+  right:50px;
 `
-
-
