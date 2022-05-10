@@ -3,68 +3,11 @@
 
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+
 import styles from "../styles/Home.module.css";
 import TextContainer from "../components/containers/TextConatiner/TextContainer";
-import { useState, useEffect, useRef } from "react";
-import { typingTestData } from "../utils/data/textSource";
-import { randomElementSelector } from "../helpers/randomSelector";
-import { testDetailsCalculator } from "../helpers/testDetailsCalculator";
+
 const Home: NextPage = () => {
-  const initialDetails: {
-    words: number;
-    characters: number;
-    mistakes: number;
-  } = {
-    words: 0,
-    characters: 0,
-    mistakes: 0,
-  };
-  const [timerStarted, setTimeStarted] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(60);
-  const [selectedParagraph, setSelectedParagraph] = useState<string>("");
-  const [detailsData, setDetailsData] = useState(initialDetails);
-  const mountedRef: React.MutableRefObject<boolean> = useRef(false);
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (mountedRef) {
-      const paragraph = randomElementSelector(typingTestData);
-      setSelectedParagraph(paragraph);
-    }
-  }, []);
-
-  const handleKeyPress = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    if (!timerStarted) startTimer();
-    const updatedDetails = testDetailsCalculator(selectedParagraph, value);
-    console.log("Updated Details: ", updatedDetails);
-    setDetailsData({ ...updatedDetails });
-  };
-
-  const startTimer = () => {
-    setTimeStarted(true);
-    const timer = setInterval(() => {
-      if (timeRemaining > 0) {
-        setTimeRemaining((prev) => prev - 1);
-      } else {
-        clearInterval(timer);
-      }
-    }, 1000);
-  };
-
-  const startAgain = () => {
-    setDetailsData({ ...initialDetails });
-    setTimeRemaining(60);
-    setTimeStarted(false);
-    const paragraph = randomElementSelector(typingTestData);
-    setSelectedParagraph(paragraph);
-  };
   return (
     <div className={styles.container}>
       <Head>
@@ -75,26 +18,16 @@ const Home: NextPage = () => {
 
       <main className={`${styles.main} bg-primary`}>
         <div>
-          
           <h1
             style={{ fontFamily: "'Carter One', cursive" }}
             className="text-white text-center"
           >
-           Start typing
+           Speed typing
           </h1>
         </div>
         <div className="">
           <div className="container-fluid">
             <TextContainer
-            // @ts-ignore
-              handleKeyPress={handleKeyPress}
-              selectedParagraph={selectedParagraph}
-              timeRemaining={timeRemaining}
-              timerStarted={timerStarted}
-              words={detailsData.words}
-              characters={detailsData.characters}
-              mistakes={detailsData.mistakes}
-              startAgain={startAgain}
             />
           </div>
         </div>

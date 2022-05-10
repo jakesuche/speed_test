@@ -5,9 +5,8 @@ describe('Home', () => {
   it('renders a heading', () => {
     render(<Home />)
 
-    const heading = screen.getByRole('heading', {
-      name: /Start typing/i,
-    })
+    
+    const heading = screen.getByText(/Speed typing/i)
 
     expect(heading).toBeInTheDocument()
   })
