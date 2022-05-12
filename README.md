@@ -1,13 +1,11 @@
 
-# Next.js + Jest
+# Next.js 
 
-This example shows how to configure Jest to work with Next.js.
+A Test that demostrates typing speed 
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+This includes Next.js' and  TypeScript.
 
 ## How to Start
-
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
 
 In your terminal, run the following command:
 
