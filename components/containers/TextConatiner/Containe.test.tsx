@@ -22,11 +22,5 @@ test("document should render properly ", () => {
   expect(onClick).toHaveBeenCalledTimes(1);
 });
 
-test("expect time to increament by 60 ", () => {
-     jest.useFakeTimers();
-    
-    const component = render(<TextContainer   />);
-    // expect(component.s)
 
-  });
   
